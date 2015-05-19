@@ -7,7 +7,7 @@ ListenChar(0);
 
 %Set file directory info
 fs = filesep;           
-base_dir = '/Users/drwilliams/Documents/MATLAB/scripts/IGT'; %for use on Patrick's computer
+base_dir = 'C:\Users\Lab User\Documents\MATLAB\iowagamblingtask'; %for use on Patrick's computer
 %Change to data directory if it exists, if not exist, then create it and cd
 if ~exist([base_dir fs 'Data'],'dir')
     mkdir([base_dir fs 'Data'])
@@ -143,9 +143,9 @@ Screen('DrawText',wPtr,'C',(rect_C(1) + rect_C(3))/2,((rect_C(2) + rect_C(4))/2)
 Screen('DrawTexture', wPtr, tex,[],rect_D);
 Screen('DrawText',wPtr,'D',(rect_D(1) + rect_D(3))/2,((rect_D(2) + rect_D(4))/2)+250,black);
 
-Screen(wPtr,'TextSize',18);
+Screen(wPtr,'TextSize',14);
 
-DrawFormattedText(wPtr,inst01,vGrid(20),hGrid(43),black,170,[],[],1.5);
+DrawFormattedText(wPtr,inst01,vGrid(15),hGrid(43),black,170,[],[],1.5);
 DrawFormattedText(wPtr,'Press any key to continue.','center',vGrid(93),black);
 
 Screen('Flip',wPtr);
@@ -167,13 +167,13 @@ for i = 1:100
 
     while 1
         [x,y,buttons] = GetMouse(wPtr);
-        Screen(wPtr,'TextSize',20);
+        Screen(wPtr,'TextSize',15);
         DrawFormattedText(wPtr,['current total: ' num2str(currTot)],'center',hGrid(6),black);
 %         DrawFormattedText(wPtr,num2str(i),'center',hGrid(8),black);        %displays round number (for testing
         % display winnings of previous round
         if i > 1
             DrawFormattedText(wPtr,['previous total: ' num2str(allCurrTot(i-1))],'center',hGrid(3),black);
-            Screen(wPtr,'TextSize',30);
+            Screen(wPtr,'TextSize',24);
             if cards(i-1) == 'A'
                 DrawFormattedText(wPtr,['win: ' num2str(win(i-1))],((rect_A(1) + rect_A(3))/2)-100,((rect_A(2) + rect_A(4))/2)-290,green);
                 DrawFormattedText(wPtr,['lose: ' num2str(lose(i-1))],((rect_A(1) + rect_A(3))/2)-100,((rect_A(2) + rect_A(4))/2)-250,red);
@@ -189,6 +189,8 @@ for i = 1:100
             end
         end
         
+        Screen(wPtr,'TextSize',20);
+        
         % draw static letter images below cards
         Screen('DrawTexture', wPtr, tex,[],rect_A);
         Screen('DrawText',wPtr,'A',(rect_A(1) + rect_A(3))/2,((rect_A(2) + rect_A(4))/2)+250,black);
@@ -201,8 +203,6 @@ for i = 1:100
 
         Screen('DrawTexture', wPtr, tex,[],rect_D);
         Screen('DrawText',wPtr,'D',(rect_D(1) + rect_D(3))/2,((rect_D(2) + rect_D(4))/2)+250,black);
-
-        Screen(wPtr,'TextSize',20);
 
         Screen('FrameRect', wPtr, black, [rect_submit],5);
         Screen('DrawText',wPtr,'Submit',(rect_submit(1) + rect_submit(3))/2-50,(rect_submit(2) + rect_submit(4))/2-20,black);
